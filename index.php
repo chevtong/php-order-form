@@ -22,7 +22,8 @@ function whatIsHappening() {
     echo '<h2>$_SESSION</h2>';
     var_dump($_SESSION);
 }
-whatIsHappening();
+//whatIsHappening();
+
 // TODO: provide some products (you may overwrite the example)
 $products = [
     ['name' => 'drink', 'price' => 2.5,],
@@ -35,33 +36,57 @@ $products = [
 
 $totalValue = 0;
 
-$email = $orderedProduct = "";
-$deliveryAddress = "";
-$productChosen ="";
-
+$email = $zipcode = $street = $streetNum = $city = "";
+$orderedProduct = $productChosen = "";
+$deliveryAddress = $emailDisplay = "";
 $emailWarning = $zipWarning = $productsWarning = "";
 
 
 if(isset($_POST["order-now"])){
 
+    $street = $_POST["street"];
+    $streetNum = $_POST["streetnumber"];
+    $city = $_POST["city"];
+
     //check email is required
     if(empty($_POST["email"])){
 
         $emailWarning = "Email Is Required";
+        $emailDisplay = "email: <br>";
 
     } else {
+        
+        $email = $_POST["email"];
+        $emailDisplay = "email: ".$email."<br>";
+
         //check email in correct format
         if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
 
             $emailWarning = "Invalid email format";
-
-
-        } else {
-
-            $email = "email: ".$_POST["email"]."<br>";
+            $emailDisplay = "email: <br>";
 
         }
+    }
+    
+
+    //TODO: delivery address is empty if missing zipcode
+    //check zipcode is required
+    if(empty($_POST["zipcode"])){
+
+        $zipWarning = "Zipcode Is Required";
+        $deliveryAddress = "Delivery Address: <br>";
+
+    } else {
+
+        $zipcode = $_POST["zipcode"];
+        $deliveryAddress = "delivery address: ". $_POST["streetnumber"].", ".$_POST["street"]. ", " . $_POST["city"]. ", " . $zipcode;
         
+        //check zipcode only in numbers
+        if (!preg_match('/^\d+$/',$_POST["zipcode"])) {
+
+            $zipWarning = "Only numbers allowed";
+            $deliveryAddress = "Delivery Address: <br>";
+        }    
     }
 
     //check products is required
@@ -79,39 +104,7 @@ if(isset($_POST["order-now"])){
         }
 
     }
-        
-    
-    
-    //check zipcode is required
-    if(empty($_POST["zipcode"])){
 
-        $zipWarning = "Zipcode Is Required";
-        $deliveryAddress = "Please enter a valid address";
-
-    } else {
-        //check zipcode only in numbers
-        if (!preg_match('/^\d+$/',$_POST["zipcode"])) {
-
-            $zipWarning = "Only numbers allowed";
-            $deliveryAddress = "Please enter a valid address";
-
-        } else {
-
-            $zipcode = $_POST["zipcode"];
-            
-            //display the address input
-            $deliveryAddress = "delivery address: ". $_POST["streetnumber"].", ".$_POST["street"]. ", " . $_POST["city"]. ", " . $zipcode;
-        }
-        
-    }
-
-    // foreach ($_POST['products'] as $i => $product) {
-    //     $orderedProduct += ($products[$i]['name']);
-    // }
-  
-
-
-   
 }
 
 require 'form-view.php';
