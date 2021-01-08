@@ -21,10 +21,11 @@ function whatIsHappening() {
     var_dump($_COOKIE);
     echo '<h2>$_SESSION</h2>';
     var_dump($_SESSION);
-}
-//whatIsHappening();
 
-// TODO: provide some products (you may overwrite the example)
+    
+}
+whatIsHappening();
+
 $products = [
     ['name' => 'drink', 'price' => 2.5,],
     ['name' => 'choclate', 'price' => 1.5,],
@@ -41,12 +42,19 @@ $orderedProduct = $productChosen = "";
 $deliveryAddress = $emailDisplay = "";
 $emailWarning = $zipWarning = $productsWarning = "";
 
+//$_SESSION["street"] = $_SESSION["streetnumber"] = $_SESSION["city"] = "";
+
+//TODO: problem: if i dont put $_SESSION["street"], warning will come up when i load to the page in first time
+// but if i put them in empty string, the $_SESSION["street"] will not be saved on the first click, 
+// and will not be filled when i refresh the page
 
 if(isset($_POST["order-now"])){
+        
+        $_SESSION["street"] = $_POST["street"] ;
+        $_SESSION["streetnumber"] = $_POST["streetnumber"];
+        $_SESSION["city"] = $_POST["city"];
 
-    $street = $_POST["street"];
-    $streetNum = $_POST["streetnumber"];
-    $city = $_POST["city"];
+       
 
     //check email is required
     if(empty($_POST["email"])){
@@ -68,8 +76,6 @@ if(isset($_POST["order-now"])){
         }
     }
     
-
-    //TODO: delivery address is empty if missing zipcode
     //check zipcode is required
     if(empty($_POST["zipcode"])){
 
@@ -79,6 +85,7 @@ if(isset($_POST["order-now"])){
     } else {
 
         $zipcode = $_POST["zipcode"];
+      
         $deliveryAddress = "delivery address: ". $_POST["streetnumber"].", ".$_POST["street"]. ", " . $_POST["city"]. ", " . $zipcode;
         
         //check zipcode only in numbers
@@ -96,15 +103,15 @@ if(isset($_POST["order-now"])){
 
     } else {
         $orderedProduct = $_POST['products'];
+        
+        //product name
         $productChosen = array_keys($orderedProduct);
      
          //show the totalValue     
-        foreach ($orderedProduct as $i => $product) {
+        foreach ($_POST['products'] as $i => $product) {
         $totalValue += ($products[$i]['price']);
         }
-
     }
-
 }
 
 require 'form-view.php';

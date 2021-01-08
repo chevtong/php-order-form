@@ -1,4 +1,6 @@
-<?php // This files is mostly containing things for your view / html ?>
+<?php // This files is mostly containing things for your view / html 
+    
+?>
 
 <!doctype html>
 <html lang="en">
@@ -43,7 +45,9 @@
                 <div class="required-info">* Required Information</div>
                 <label for="email">E-mail *:</label>
                 <input type="text" id="email" name="email" class="form-control" value="<?php echo $email;?>"/>
-                <div class="warning"> <?php echo $emailWarning; ?> </div>
+                <div class="warning"> <?php echo $emailWarning; ?> </div> 
+
+
             </div>
             <div></div>
         </div>
@@ -54,17 +58,17 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="street">Street:</label>
-                    <input type="text" name="street" id="street" class="form-control" value="<?php echo $street;?>" >
+                    <input type="text" name="street" id="street" class="form-control" value="<?php echo $_SESSION["street"];?>" >
                 </div>
                 <div class="form-group col-md-6">
                     <label for="streetnumber">Street number:</label>
-                    <input type="text" id="streetnumber" name="streetnumber" class="form-control" value="<?php echo $streetNum;?>">
+                    <input type="text" id="streetnumber" name="streetnumber" class="form-control" value="<?php echo $_SESSION["streetnumber"];?>">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="city">City:</label>
-                    <input type="text" id="city" name="city" class="form-control" value="<?php echo $city;?>">
+                    <input type="text" id="city" name="city" class="form-control" value="<?php echo $_SESSION["city"];?>">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="zipcode">Zipcode</label>
@@ -92,7 +96,7 @@
     <div class="order-product">
 
     <?php
-   if(isset($_POST["order-now"])){
+    if(isset($_POST["order-now"])){
        
         if(empty($_POST["products"])){
 
@@ -109,14 +113,11 @@
         }
     }
 
-    ?>
-
-    </div>
+    ?></div>
     You already ordered <strong>&euro; <?php echo $totalValue ?></strong> in food and drinks. <br>
            
             <?php echo $emailDisplay;?> 
             <?php echo $deliveryAddress;?>
-
             
     </footer>
 </div>
