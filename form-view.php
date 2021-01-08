@@ -1,5 +1,5 @@
 <?php // This files is mostly containing things for your view / html 
-    
+  
 ?>
 
 <!doctype html>
@@ -58,17 +58,17 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="street">Street:</label>
-                    <input type="text" name="street" id="street" class="form-control" value="<?php echo $_SESSION["street"];?>" >
+                    <input type="text" name="street" id="street" class="form-control" value="<?php print_r($_SESSION["street"]) ;?>" >
                 </div>
                 <div class="form-group col-md-6">
                     <label for="streetnumber">Street number:</label>
-                    <input type="text" id="streetnumber" name="streetnumber" class="form-control" value="<?php echo $_SESSION["streetnumber"];?>">
+                    <input type="text" id="streetnumber" name="streetnumber" class="form-control" value="<?php print_r($_SESSION["streetnumber"]);?>">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="city">City:</label>
-                    <input type="text" id="city" name="city" class="form-control" value="<?php echo $_SESSION["city"];?>">
+                    <input type="text" id="city" name="city" class="form-control" value="<?php print_r($_SESSION["city"]);?>">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="zipcode">Zipcode</label>

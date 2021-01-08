@@ -8,8 +8,9 @@
 declare(strict_types=1);
 
 
-// We are going to use session variables so we need to enable sessions
-session_start();
+
+    // We are going to use session variables so we need to enable sessions
+    session_start();
 
 // Use this function when you need to need an overview of these variables
 function whatIsHappening() {
@@ -44,17 +45,24 @@ $emailWarning = $zipWarning = $productsWarning = "";
 
 //$_SESSION["street"] = $_SESSION["streetnumber"] = $_SESSION["city"] = "";
 
-//TODO: problem: if i dont put $_SESSION["street"], warning will come up when i load to the page in first time
-// but if i put them in empty string, the $_SESSION["street"] will not be saved on the first click, 
+//TODO: problem: if i dont put $_SESSION["street"] = "", warning of Undefined array key will come up when i load to the page in first time
+// and if i put them in empty string, the $_SESSION["street"] will not be saved on the first click, 
 // and will not be filled when i refresh the page
 
 if(isset($_POST["order-now"])){
-        
-        $_SESSION["street"] = $_POST["street"] ;
-        $_SESSION["streetnumber"] = $_POST["streetnumber"];
-        $_SESSION["city"] = $_POST["city"];
 
-       
+    //$_SESSION["street"] = $_POST["street"] ;
+    $_SESSION["streetnumber"] = $_POST["streetnumber"];
+    $_SESSION["city"] = $_POST["city"];
+
+    $_SESSION["street"] = $_POST["street"];    
+    // if(empty($_POST["street"])){
+
+    //     echo "street is filled";
+
+    // } else {
+           
+    // }
 
     //check email is required
     if(empty($_POST["email"])){
