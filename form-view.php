@@ -9,23 +9,18 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="style/favicon.png" type="image/x-icon">  
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" type="text/css"
           rel="stylesheet"/>
-    <title>Your fancy store</title>
+    <link rel="stylesheet" href="style/style.css">
+    <title>Carb</title>
     
-<style>
-    footer {
-        text-align: center;
-    }
-    .warning{
-        
-        color: red;
-    }
-</style>
+
 </head>
 <body>
-<div class="container">
-    <h1>Place your order</h1>
+<div class="background"></div>
+<div class="container pt-5">
+    <h1 class="text-capitalize font-weight-bold">Place your order</h1>
     <?php // Navigation for when you need it ?>
     <?php /*
     <nav>
@@ -41,9 +36,9 @@
     */ ?>
     <form method="post" name="order-from">
         <div class="form-row">
-            <div class="form-group col-md-6">
-                <div class="required-info">* Required Information</div>
-                <label for="email">E-mail *:</label>
+            <div class="form-group col-md-6 pt-3 pb-3">
+                <div class="required-info font-weight-light pb-2">* Required Information</div>
+                <label for="email" >E-mail *:</label>
                 <input type="text" id="email" name="email" class="form-control" value="<?php echo $email;?>"/>
                 <div class="warning"> <?php echo $emailWarning; ?> </div> 
 
@@ -53,25 +48,25 @@
         </div>
 
         <fieldset>
-            <legend>Address</legend>
+            <legend class="font-weight-bold">Address</legend>
 
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="street">Street:</label>
-                    <input type="text" name="street" id="street" class="form-control" value="<?php print_r($_SESSION["street"]) ;?>" >
+                    <input type="text" name="street" id="street" class="form-control" value="<?php echo $_SESSION["street"] ;?>" >
                 </div>
                 <div class="form-group col-md-6">
-                    <label for="streetnumber">Street number:</label>
-                    <input type="text" id="streetnumber" name="streetnumber" class="form-control" value="<?php print_r($_SESSION["streetnumber"]);?>">
+                    <label for="streetnumber" class="text-capitalize">Street number:</label>
+                    <input type="text" id="streetnumber" name="streetnumber" class="form-control" value="<?php echo $_SESSION["streetnumber"];?>">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="city">City:</label>
-                    <input type="text" id="city" name="city" class="form-control" value="<?php print_r($_SESSION["city"]);?>">
+                    <input type="text" id="city" name="city" class="form-control" value="<?php echo $_SESSION["city"];?>">
                 </div>
                 <div class="form-group col-md-6">
-                    <label for="zipcode">Zipcode</label>
+                    <label for="zipcode">Zipcode:</label>
                     <input type="text" id="zipcode" name="zipcode" class="form-control" value="<?php echo $zipcode;?>" >
                     <div class="warning"> <?php echo $zipWarning; ?></div>
                 </div>
@@ -79,21 +74,23 @@
         </fieldset>
 
         <fieldset>
-            <legend>Products *</legend>
+            <legend class="font-weight-bold">Products *</legend>
             <div class="warning"> <?php echo $productsWarning; ?></div>
             <?php foreach ($products as $i => $product): ?>
-                <label>
+                <label class="products text-uppercase font-weight-bold p-1">
 					<?php // <?p= is equal to <?php echo ?>
-                    <input type="checkbox" value="1" name="products[<?php echo $i ?>]"/> <?php echo $product['name'] ?> -
+                    <input type="checkbox" value="1" name="products[<?php echo $i ?>]"/> <?php echo $product['name'] ?>  
                     &euro; <?= number_format($product['price'], 2) ?></label><br />
             <?php endforeach; ?>
         </fieldset>
 
-        <button type="submit" name="order-now" class="btn btn-primary">Order!</button>
+        <button type="submit" name="order-now" class="btn btn-outline-warning m-2">Order!</button>
     </form>
 
     <footer>
-    <div class="order-product">
+    <div class="order-product font-weight-bold text-uppercase pb-1">
+        
+    <span class="choice text-capitalize font-weight-normal font-italic">your choice: <br></span>
 
     <?php
     if(isset($_POST["order-now"])){
@@ -106,21 +103,26 @@
             
             foreach($productChosen as $product){
             
+            
             // show name of the product 
-            echo $products[$product]["name"]." " ;
+            echo $products[$product]["name"]."<br> " ;
            
             }
         }
     }
-
+ 
     ?></div>
-    You already ordered <strong>&euro; <?php echo $totalValue ?></strong> in food and drinks. <br>
+    You already ordered <strong>&euro; <?php echo $totalValue ?></strong> in Crab &#174; <br>
            
-            <?php echo $emailDisplay;?> 
-            <?php echo $deliveryAddress;?>
-            
+           <div class="email-display pt-1 "> <?php echo $emailDisplay;?> </div>
+            <div class="address-display pt-1 pb-1"><?php echo $deliveryAddress;?></div>
+           
     </footer>
 </div>
 
 </body>
 </html>
+
+<?php 
+// session_destroy();
+?>

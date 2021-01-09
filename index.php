@@ -25,15 +25,15 @@ function whatIsHappening() {
 
     
 }
-whatIsHappening();
+//whatIsHappening();
 
 $products = [
-    ['name' => 'drink', 'price' => 2.5,],
-    ['name' => 'choclate', 'price' => 1.5,],
-    ['name' => 'coffee', 'price' => 4,],
-    ['name' => 'food', 'price' => 2.5,],
-    ['name' => 'cake', 'price' => 6.5,],
-    ['name' => 'ice cream', 'price' => 8,],
+    ['name' => 'sourdough loaf', 'price' => 2,],
+    ['name' => 'whole grain loaf', 'price' => 2.3,],
+    ['name' => 'brioche', 'price' => 4,],
+    ['name' => 'Bagel', 'price' => 2.5,],
+    ['name' => 'apple pie', 'price' => 6.5,],
+    ['name' => 'custard tart', 'price' => 5,],
 ];
 
 $totalValue = 0;
@@ -49,37 +49,33 @@ $emailWarning = $zipWarning = $productsWarning = "";
 // and if i put them in empty string, the $_SESSION["street"] will not be saved on the first click, 
 // and will not be filled when i refresh the page
 
+
 if(isset($_POST["order-now"])){
 
-    //$_SESSION["street"] = $_POST["street"] ;
-    $_SESSION["streetnumber"] = $_POST["streetnumber"];
-    $_SESSION["city"] = $_POST["city"];
 
-    $_SESSION["street"] = $_POST["street"];    
-    // if(empty($_POST["street"])){
+    $_SESSION["street"] = $_POST["street"];
+   $_SESSION["streetnumber"] = $_POST["streetnumber"] ;
+   $_SESSION["city"] = $_POST["city"];
 
-    //     echo "street is filled";
-
-    // } else {
-           
-    // }
+    
+ 
 
     //check email is required
     if(empty($_POST["email"])){
 
         $emailWarning = "Email Is Required";
-        $emailDisplay = "email: <br>";
+        $emailDisplay = "Email: <br>";
 
     } else {
         
         $email = $_POST["email"];
-        $emailDisplay = "email: ".$email."<br>";
+        $emailDisplay = "Email: ".$email."<br>";
 
         //check email in correct format
         if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
 
             $emailWarning = "Invalid email format";
-            $emailDisplay = "email: <br>";
+            $emailDisplay = "Email: <br>";
 
         }
     }
@@ -94,7 +90,7 @@ if(isset($_POST["order-now"])){
 
         $zipcode = $_POST["zipcode"];
       
-        $deliveryAddress = "delivery address: ". $_POST["streetnumber"].", ".$_POST["street"]. ", " . $_POST["city"]. ", " . $zipcode;
+        $deliveryAddress = "Delivery address: ". $_POST["streetnumber"].", ".$_POST["street"]. ", " . $_POST["city"]. ", " . $zipcode;
         
         //check zipcode only in numbers
         if (!preg_match('/^\d+$/',$_POST["zipcode"])) {
@@ -120,6 +116,10 @@ if(isset($_POST["order-now"])){
         $totalValue += ($products[$i]['price']);
         }
     }
+
+
+
 }
+
 
 require 'form-view.php';
