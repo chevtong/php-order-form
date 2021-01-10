@@ -45,3 +45,11 @@ footer {
     font-size: 1.3rem;
 }
 
+button{
+    color: #9c5518;
+    font-weight: bold;
+    border: 2px solid #9c5518;
+    border-radius: 5px;
+    background-color: transparent;
+}
+

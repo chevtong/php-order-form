@@ -9,9 +9,12 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="shortcut icon" href="style/favicon.png" type="image/x-icon">  
+
+    <link rel="icon" type="image/png" href="style/favicon.png">
+    
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" type="text/css"
           rel="stylesheet"/>
+          
     <link rel="stylesheet" href="style/style.css">
     <title>Carb</title>
     
@@ -100,31 +103,48 @@
             <?php endforeach; ?>
         </fieldset>
 
-        <button type="submit" name="order-now" class="btn btn-outline-warning m-2">Order!</button>
+        <button type="submit" name="order-now" class="btn btn-outline-warning btn-lg mt-3">Order!</button>
     </form>
 
     <footer>
-    <div class="order-product font-weight-bold text-uppercase pb-1">
+    <div class="order-product ">
         
     <span class="choice text-capitalize font-weight-normal font-italic">your choice: <br></span>
 
     <?php
-    //To show the selected products: use isset when the isset($_POST["products"]) to confirm it is set
-    if(isset($_POST["products"]) && !empty($_POST["products"]) ){
+    
+    // $totalprice ="";
+    // if(isset($_POST["products"]) && !empty($_POST["products"]) ){
 
-        // take out the keys of the array to refer to the products array to grab the name of the product(s)
-         $productChosen = array_keys($_POST['products']);
-         //it give back an array with the keys
-         //var_dump($productChosen);
+    //     
+    //      $productChosen = array_keys($_POST['products']);
+    //      //it give back an array with the keys
+    //      //var_dump($productChosen);
 
-         //use foreach to loop thru the above array
-        foreach($productChosen as $bread){
-            //use the array[index]to get the name
-             echo $products[$bread]["name"]."<br>";
-        }
-    }
+    //      
+    //     foreach($productChosen as $bread){
+    //         
+    //          echo $products[$bread]["name"]."<br>";
+    //     }
+    // }
     
     ?>
+        <?php //To show the selected products: use isset when the isset($_POST["products"]) to confirm it is set
+        if(isset($_POST["products"]) && !empty($_POST["products"])){ 
+            // take out the keys of the array to refer to the products array to grab the name of the product(s)
+            $productChosen = array_keys($_POST['products']);
+            //it give back an array with the keys, then use a foreach in form-view.php to grab the name
+            //var_dump($productChosen);
+
+            //use foreach to loop thru the array
+            foreach ($productChosen as $bread) { ?>
+
+        <p class="text-uppercase font-weight-bold my-0"> 
+        <?php echo $products[$bread]["name"];
+        //use the array[index]to get the name?>
+        </p>
+
+        <?php }} ?>
     </div>
     You already ordered <strong>&euro; <?php echo $totalValue ?></strong> in Crab &#174; <br>
            
