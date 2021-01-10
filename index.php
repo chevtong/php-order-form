@@ -107,11 +107,18 @@ if(isset($_POST["order-now"])){
         $productsWarning = "Products Is Required";
 
     } else {
-       
-        //for product name
+
+        // take out the keys of the array to refer to the products array to grab the name of the product(s)
         $productChosen = array_keys($_POST['products']);
-     
-         //show the totalValue     
+        //it give back an array with the keys
+        //var_dump($productChosen);
+
+       foreach($productChosen as $bread){
+           $orderedProduct = ($products[$bread]["name"]);
+           echo $orderedProduct;
+       }
+
+        //show the totalValue     
         foreach ($_POST['products'] as $i => $product) {
         $totalValue += ($products[$i]['price']);
         }

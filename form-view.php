@@ -1,6 +1,5 @@
 <?php // This files is mostly containing things for your view / html 
-  //session_start();
-  
+
 ?>
 
 <!doctype html>
@@ -124,7 +123,7 @@
              echo $products[$bread]["name"]."<br>";
         }
     }
- 
+    
     ?>
     </div>
     You already ordered <strong>&euro; <?php echo $totalValue ?></strong> in Crab &#174; <br>
