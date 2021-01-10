@@ -25,7 +25,7 @@ function whatIsHappening() {
 
     
 }
-//whatIsHappening();
+whatIsHappening();
 
 $products = [
     ['name' => 'sourdough loaf', 'price' => 2,],
@@ -43,22 +43,22 @@ $orderedProduct = $productChosen = "";
 $deliveryAddress = $emailDisplay = "";
 $emailWarning = $zipWarning = $productsWarning = "";
 
-//$_SESSION["street"] = $_SESSION["streetnumber"] = $_SESSION["city"] = "";
-
-//TODO: problem: if i dont put $_SESSION["street"] = "", warning of Undefined array key will come up when i load to the page in first time
-// and if i put them in empty string, the $_SESSION["street"] will not be saved on the first click, 
-// and will not be filled when i refresh the page
-
-
 if(isset($_POST["order-now"])){
 
+    //check if the street input is not empty, give the value to the session variable
+    if(!empty($_POST["street"])){
+        $_SESSION["street"] = $_POST["street"];
+    }
 
-    $_SESSION["street"] = $_POST["street"];
-   $_SESSION["streetnumber"] = $_POST["streetnumber"] ;
-   $_SESSION["city"] = $_POST["city"];
+    //check if the streetNumber input is not empty, give the value to the session variable
+    if(!empty($_POST["streetnumber"])){
+        $_SESSION["streetnumber"] = $_POST["streetnumber"];
+    }
 
-    
- 
+    //check if the city input is not empty, give the value to the session variable
+    if(!empty($_POST["city"])){
+        $_SESSION["city"] = $_POST["city"];
+    }
 
     //check email is required
     if(empty($_POST["email"])){
@@ -76,7 +76,6 @@ if(isset($_POST["order-now"])){
 
             $emailWarning = "Invalid email format";
             $emailDisplay = "Email: <br>";
-
         }
     }
     
@@ -88,16 +87,18 @@ if(isset($_POST["order-now"])){
 
     } else {
 
-        $zipcode = $_POST["zipcode"];
-      
-        $deliveryAddress = "Delivery address: ". $_POST["streetnumber"].", ".$_POST["street"]. ", " . $_POST["city"]. ", " . $zipcode;
-        
         //check zipcode only in numbers
         if (!preg_match('/^\d+$/',$_POST["zipcode"])) {
 
             $zipWarning = "Only numbers allowed";
             $deliveryAddress = "Delivery Address: <br>";
-        }    
+
+        } else {   
+
+            $deliveryAddress = "Delivery address: ". $_POST["streetnumber"].", ".$_POST["street"]. ", " . $_POST["city"]. ", " . $_POST["zipcode"];
+            //give the value of zipcode input to the session variable
+            $_SESSION["zipcode"] = $_POST["zipcode"];
+        }
     }
 
     //check products is required
@@ -106,19 +107,15 @@ if(isset($_POST["order-now"])){
         $productsWarning = "Products Is Required";
 
     } else {
-        $orderedProduct = $_POST['products'];
-        
-        //product name
-        $productChosen = array_keys($orderedProduct);
+       
+        //for product name
+        $productChosen = array_keys($_POST['products']);
      
          //show the totalValue     
         foreach ($_POST['products'] as $i => $product) {
         $totalValue += ($products[$i]['price']);
         }
     }
-
-
-
 }
 
 

@@ -1,4 +1,5 @@
 <?php // This files is mostly containing things for your view / html 
+  //session_start();
   
 ?>
 
@@ -38,14 +39,14 @@
         <div class="form-row">
             <div class="form-group col-md-6 pt-3 pb-3">
                 <div class="required-info font-weight-light pb-2">* Required Information</div>
-                <label for="email" >E-mail *:</label>
+                <label for="email" >E-mail* :</label>
                 <input type="text" id="email" name="email" class="form-control" value="<?php echo $email;?>"/>
                 <div class="warning"> <?php echo $emailWarning; ?> </div> 
-
-
             </div>
-            <div></div>
+            
         </div>
+
+
 
         <fieldset>
             <legend class="font-weight-bold">Address</legend>
@@ -53,28 +54,44 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="street">Street:</label>
-                    <input type="text" name="street" id="street" class="form-control" value="<?php echo $_SESSION["street"] ;?>" >
+                    <input type="text" name="street" id="street" class="form-control" value="<?php 
+                    if(isset($_SESSION["street"]) && !empty($_SESSION["street"])){
+                        echo $_SESSION["street"];
+                    }
+                    ?>" >
                 </div>
                 <div class="form-group col-md-6">
                     <label for="streetnumber" class="text-capitalize">Street number:</label>
-                    <input type="text" id="streetnumber" name="streetnumber" class="form-control" value="<?php echo $_SESSION["streetnumber"];?>">
+                    <input type="text" id="streetnumber" name="streetnumber" class="form-control" value="<?php 
+                      if(isset($_SESSION["streetnumber"]) && !empty($_SESSION["streetnumber"])){
+                        echo $_SESSION["streetnumber"];
+                    }
+                    ?>">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="city">City:</label>
-                    <input type="text" id="city" name="city" class="form-control" value="<?php echo $_SESSION["city"];?>">
+                    <input type="text" id="city" name="city" class="form-control" value="<?php 
+                     if(isset($_SESSION["city"]) && !empty($_SESSION["city"])){
+                        echo $_SESSION["city"];
+                    }
+                    ?>">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="zipcode">Zipcode:</label>
-                    <input type="text" id="zipcode" name="zipcode" class="form-control" value="<?php echo $zipcode;?>" >
+                    <input type="text" id="zipcode" name="zipcode" class="form-control" value="<?php 
+                    if(isset($_SESSION["zipcode"]) && !empty($_SESSION["zipcode"])){
+                    echo $_SESSION["zipcode"];
+                    }
+                    ?>" >
                     <div class="warning"> <?php echo $zipWarning; ?></div>
                 </div>
             </div>
         </fieldset>
 
         <fieldset>
-            <legend class="font-weight-bold">Products *</legend>
+            <legend class="font-weight-bold">Products*</legend>
             <div class="warning"> <?php echo $productsWarning; ?></div>
             <?php foreach ($products as $i => $product): ?>
                 <label class="products text-uppercase font-weight-bold p-1">
@@ -93,25 +110,23 @@
     <span class="choice text-capitalize font-weight-normal font-italic">your choice: <br></span>
 
     <?php
-    if(isset($_POST["order-now"])){
-       
-        if(empty($_POST["products"])){
+    //To show the selected products: use isset when the isset($_POST["products"]) to confirm it is set
+    if(isset($_POST["products"]) && !empty($_POST["products"]) ){
 
-            $productsWarning = "Products Is Required";
+        // take out the keys of the array to refer to the products array to grab the name of the product(s)
+         $productChosen = array_keys($_POST['products']);
+         //it give back an array with the keys
+         //var_dump($productChosen);
 
-        } else {
-            
-            foreach($productChosen as $product){
-            
-            
-            // show name of the product 
-            echo $products[$product]["name"]."<br> " ;
-           
-            }
+         //use foreach to loop thru the above array
+        foreach($productChosen as $bread){
+            //use the array[index]to get the name
+             echo $products[$bread]["name"]."<br>";
         }
     }
  
-    ?></div>
+    ?>
+    </div>
     You already ordered <strong>&euro; <?php echo $totalValue ?></strong> in Crab &#174; <br>
            
            <div class="email-display pt-1 "> <?php echo $emailDisplay;?> </div>
@@ -122,7 +137,3 @@
 
 </body>
 </html>
-
-<?php 
-// session_destroy();
-?>
