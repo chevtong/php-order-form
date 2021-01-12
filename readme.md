@@ -1,6 +1,6 @@
 # Order Form
 
-Create an online order form for the bakery - Crab &#174;
+Create an online order form for my bakery - Crab &#174;
 <br><br>
 ### Preparation
  - An index file and another file containing a form are provided.
@@ -21,8 +21,7 @@ Use PHP session to prefill the address (after the first usage), as long as the b
 <br><br>
 ## Step 4: Expanding due to Success
 Use the get variables to make a second category of products - pastries. 
-Provide a new array for this info (under construction). <br>
-The navigation should work as a toggle to switch between the two categories of products.
+The navigation work as a toggle to switch between the two categories of products.
 <br><br>
 ## Used Tools
 - VS CODE
