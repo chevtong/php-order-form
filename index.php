@@ -7,8 +7,10 @@
 // This line makes PHP behave in a more strict way
 declare(strict_types=1);
 
-// We are going to use session variables so we need to enable sessions
-session_start();
+
+
+    // We are going to use session variables so we need to enable sessions
+    session_start();
 
 // Use this function when you need to need an overview of these variables
 function whatIsHappening() {
@@ -16,55 +18,42 @@ function whatIsHappening() {
     var_dump($_GET);
     echo '<h2>$_POST</h2>';
     var_dump($_POST);
-    
-    // echo '<h2>$_COOKIE</h2>';
-    // var_dump($_COOKIE);
+    echo '<h2>$_COOKIE</h2>';
+    var_dump($_COOKIE);
     echo '<h2>$_SESSION</h2>';
     echo "<pre>";
     var_dump($_SESSION);
     echo "</pre>";
 
+    
 }
 whatIsHappening();
     
 
 
     
-// if(isset($_GET["pastries"]) ) {
+if(isset($_GET["pastries"]) ) {
 
-//     $products = [
-//         ['name' => 'Cheese Cake', 'price' => 2,],
-//         ['name' => 'Lemon Tart', 'price' => 2.3,],
-//         ['name' => 'custard tart', 'price' => 4,],
-//         ['name' => 'apple pie', 'price' => 6.5,],
-//         ['name' => 'Tiramisu', 'price' => 5,],           
-//     ];
+    $products = [
+        ['name' => 'Cheese Cake', 'price' => 2,],
+        ['name' => 'Lemon Tart', 'price' => 2.3,],
+        ['name' => 'custard tart', 'price' => 4,],
+        ['name' => 'apple pie', 'price' => 6.5,],
+        ['name' => 'Tiramisu', 'price' => 5,],           
+    ];
 
-// } else {
+} else {
 
-//     $products = [
-//         ['name' => 'sourdough loaf', 'price' => 2,],
-//         ['name' => 'whole grain loaf', 'price' => 2.3,],
-//         ['name' => 'brioche', 'price' => 4,],
-//         ['name' => 'Bagel', 'price' => 2.5,],
-//         ['name' => 'seeded loaf', 'price' => 6.5,], 
-//     ];
-// };
+    $products = [
+        ['name' => 'sourdough loaf', 'price' => 2,],
+        ['name' => 'whole grain loaf', 'price' => 2.3,],
+        ['name' => 'brioche', 'price' => 4,],
+        ['name' => 'Bagel', 'price' => 2.5,],
+        ['name' => 'seeded loaf', 'price' => 6.5,], 
+    ];
+};
     
-$products = [
-    ['name' => 'sourdough loaf', 'price' => 2,],
-    ['name' => 'whole grain loaf', 'price' => 2.3,],
-    ['name' => 'brioche', 'price' => 4,],
-    ['name' => 'Bagel', 'price' => 2.5,],
-    ['name' => 'seeded loaf', 'price' => 6.5,], 
-    ['name' => 'Cheese Cake', 'price' => 2,],
-    ['name' => 'Lemon Tart', 'price' => 2.3,],
-    ['name' => 'custard tart', 'price' => 4,],
-    ['name' => 'apple pie', 'price' => 6.5,],
-    ['name' => 'Tiramisu', 'price' => 5,],           
-];
-    
-    
+
 
 $totalValue = 0;
 
@@ -73,12 +62,10 @@ $productChosen = "";
 $deliveryAddress = $emailDisplay = "";
 $emailWarning = $zipWarning = $productsWarning = "";
 
-
 if(isset($_POST["order-now"])){
 
     //check if the street input is not empty, give the value to the session variable
     if(!empty($_POST["street"])){
-        
         $_SESSION["street"] = $_POST["street"];
     }
 
@@ -139,8 +126,6 @@ if(isset($_POST["order-now"])){
         $productsWarning = "Products Is Required";
 
     } else {
-
-        $_SESSION["products"] = $_POST["products"];
 
         //show the totalValue     
         foreach ($_POST['products'] as $i => $product) {
