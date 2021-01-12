@@ -15,72 +15,56 @@ function whatIsHappening() {
     echo '<h2>$_GET</h2>';
     var_dump($_GET);
     echo '<h2>$_POST</h2>';
-    echo "<pre>";
     var_dump($_POST);
-    echo "</pre>";
-    echo '<h2>$_COOKIE</h2>';
-    var_dump($_COOKIE);
+    
+    // echo '<h2>$_COOKIE</h2>';
+    // var_dump($_COOKIE);
     echo '<h2>$_SESSION</h2>';
+    echo "<pre>";
     var_dump($_SESSION);
+    echo "</pre>";
 
 }
 whatIsHappening();
     
-// $displayBread = 
-// $displayPastries = 
 
-
-$products = [
-    ['name' => 'sourdough loaf', 'price' => 2,],
-    ['name' => 'whole grain loaf', 'price' => 2.3,],
-    ['name' => 'brioche', 'price' => 4,],
-    ['name' => 'Bagel', 'price' => 2.5,],
-    ['name' => 'seeded loaf', 'price' => 6.5,],
-    
-];
-
-if(isset($_GET["bread"])){
- 
-    $products = [
-        ['name' => 'sourdough loaf', 'price' => 2,],
-        ['name' => 'whole grain loaf', 'price' => 2.3,],
-        ['name' => 'brioche', 'price' => 4,],
-        ['name' => 'Bagel', 'price' => 2.5,],
-        ['name' => 'seeded loaf', 'price' => 6.5,],  
-    ];
-}
-    
-if(isset($_GET["pastries"]) ){
-    $products = [
-        ['name' => 'Cheese Cake', 'price' => 2,],
-        ['name' => 'Lemon Tart', 'price' => 2.3,],
-        ['name' => 'custard tart', 'price' => 4,],
-        ['name' => 'apple pie', 'price' => 6.5,],
-        ['name' => 'Tiramisu', 'price' => 5,],           
-    ];
-};
-    
 
     
+// if(isset($_GET["pastries"]) ) {
 
-// if(isset($_POST["pastries-btn"])){
 //     $products = [
 //         ['name' => 'Cheese Cake', 'price' => 2,],
 //         ['name' => 'Lemon Tart', 'price' => 2.3,],
 //         ['name' => 'custard tart', 'price' => 4,],
 //         ['name' => 'apple pie', 'price' => 6.5,],
-//         ['name' => 'Tiramisu', 'price' => 5,],
+//         ['name' => 'Tiramisu', 'price' => 5,],           
 //     ];
+
 // } else {
+
 //     $products = [
 //         ['name' => 'sourdough loaf', 'price' => 2,],
 //         ['name' => 'whole grain loaf', 'price' => 2.3,],
 //         ['name' => 'brioche', 'price' => 4,],
 //         ['name' => 'Bagel', 'price' => 2.5,],
-//         ['name' => 'seeded loaf', 'price' => 6.5,],
-        
+//         ['name' => 'seeded loaf', 'price' => 6.5,], 
 //     ];
 // };
+    
+$products = [
+    ['name' => 'sourdough loaf', 'price' => 2,],
+    ['name' => 'whole grain loaf', 'price' => 2.3,],
+    ['name' => 'brioche', 'price' => 4,],
+    ['name' => 'Bagel', 'price' => 2.5,],
+    ['name' => 'seeded loaf', 'price' => 6.5,], 
+    ['name' => 'Cheese Cake', 'price' => 2,],
+    ['name' => 'Lemon Tart', 'price' => 2.3,],
+    ['name' => 'custard tart', 'price' => 4,],
+    ['name' => 'apple pie', 'price' => 6.5,],
+    ['name' => 'Tiramisu', 'price' => 5,],           
+];
+    
+    
 
 $totalValue = 0;
 
@@ -164,6 +148,10 @@ if(isset($_POST["order-now"])){
         }
     }
 }
+
+
+
+
 
 
 require 'form-view.php';

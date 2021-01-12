@@ -23,6 +23,9 @@
 
 </head>
 <body>
+
+
+
 <div class="background"></div>
 <div class="container pt-5">
     <h1 class="text-capitalize font-weight-bold">Place your order</h1>
@@ -31,10 +34,10 @@
     <nav>
         <ul class="nav">
             <li class="nav-item">
-                <a class="nav-link active  " href="?food">Order bread</a>
+                <a class="nav-link text-warning text-uppercase active  " href="?bread">Order bread</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="?drinks" >Order pastries</a>
+                <a class="nav-link text-warning text-uppercase" href="?pastries" >Order pastries</a>
             </li>
         </ul>
     </nav>
@@ -90,17 +93,12 @@
             <legend class="font-weight-bold">Products*</legend>
             <div class="warning"> <?php echo $productsWarning; ?></div>
             <?php // if(isset($_POST["bread-btn"])){
-            foreach ($products as $i => $product){ ?>
+            for(i=0; i =) ($products as $i => $product){ ?>
                 <label class="products text-uppercase font-weight-bold p-1">
 					<?php // <?p= is equal to <?php echo ?>
                     <input type="checkbox" value="1" name="products[<?php echo $i ?>]" /> <?php echo $product['name'] ?>  
                     &euro; <?= number_format($product['price'], 2) ?></label><br />
             <?php 
-               
-            //    if(isset($_POST["products[$i]"])){
-            //        echo "yes";
-            //    }
-
             };
             ?>
 
@@ -109,7 +107,7 @@
          
         </fieldset>
 
-        <button type="submit" name="order-now" class="btn btn-outline-warning btn-lg mt-3">Order!</button>
+        <button type="submit" name="order-now" class="btn btn-outline-warning btn-lg text-uppercase mt-3">Order!</button>
     </form>
 
     <footer>
@@ -130,10 +128,13 @@
         <p class="text-uppercase font-weight-bold my-0"> 
 
         <?php echo $products[$bread]["name"];
-        //use the array[index]to get the name?>
+        //use the array[index]to get the name
+                
+
+        ?>
         </p>
 
-        <?php }} ?>
+        <?php } ?>
     </div>
     You already ordered <strong>&euro; <?php echo $totalValue ?></strong> in Crab &#174; <br>
            
