@@ -1,57 +1,60 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing: border-box;
-}
-
-body{
-    font-family: 'Montserrat', sans-serif;
-    color: #5a3f11;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-h1{
-    color: #9c5518;
-    border-bottom: 1px solid #ef962d;
+body {
+  font-family: "Montserrat", sans-serif;
+  color: #5a3f11;
 }
 
-.background{ 
-    height: 40vh;
-    background-image: linear-gradient(rgba(255, 255, 255, .5), rgba(255, 255, 255, 0.3)), url("bread.jpg");
-    background-size: cover;
-    background-position: center;
-}
-.required-info{
-    font-size: .8rem;
-}
-label{
-    margin: 0;
+label {
+  margin: 0;
 }
 
-.order-confirmation{
-    padding: 1.3rem 2rem;
-
-    background-color: rgba(219,	205, 188, .3);
-    /* background-color: #dbcdbc; */
-    border-radius: 5px;
-    margin: 1rem 0;
-    color:#5a3f11;
-   margin: 2rem 0;
+h1 {
+  color: #9c5518;
+  border-bottom: 1px solid #ef962d;
 }
-.warning{
-    font-size: .8rem;
-    color: #ff4301;
-}
-.order-product{
-    font-size: 1.3rem;
+button {
+  color: #9c5518;
+  font-weight: bold;
+  border: 2px solid #9c5518;
+  border-radius: 5px;
+  background-color: transparent;
 }
 
-button{
-    color: #9c5518;
-    font-weight: bold;
-    border: 2px solid #9c5518;
-    border-radius: 5px;
-    background-color: transparent;
+.background {
+  height: 40vh;
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0.3)
+    ),
+    url("bread.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.required-info {
+  font-size: 0.8rem;
 }
 
+.order-confirmation {
+  padding: 1.3rem 2rem;
+
+  background-color: rgba(219, 205, 188, 0.3);
+  /* background-color: #dbcdbc; */
+  border-radius: 5px;
+  margin: 1rem 0;
+  color: #5a3f11;
+  margin: 2rem 0;
+}
+.warning {
+  font-size: 0.8rem;
+  color: #ff4301;
+}
+.order-product {
+  font-size: 1.3rem;
+}
