@@ -1,6 +1,4 @@
-<?php // This files is mostly containing things for your view / html 
-
-?>
+<?php // This files is mostly containing things for your view / htmll ?>
 
 <!doctype html>
 <html lang="en">

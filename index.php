@@ -9,6 +9,7 @@ declare(strict_types=1);
 // We are going to use session variables so we need to enable sessions
 session_start();
 
+//require the product class
 require 'products.php';
 
 // Use this function when you need to need an overview of these variables
@@ -26,14 +27,11 @@ function whatIsHappening() {
 }
 //whatIsHappening();
    
-
 $totalValue = $totalValueTwoDigits = 0;
 $email = $zipcode = $street = $streetNum = $city = "";
 $productChosen = "";
 $deliveryAddress = $emailDisplay = "";
 $emailWarning = $zipWarning = $productsWarning = "";
-
-
 
 if(isset($_GET["pastries"]) ) {
 
@@ -53,10 +51,8 @@ if(isset($_GET["pastries"]) ) {
         new Product("Bagel", 1.9),
         new Product("brioche", 4),
         new Product("seeded loaf", 3.5),
-    ];
-    
+    ];  
 };
-
 
 
 if(isset($_POST["order-now"])){
