@@ -152,9 +152,9 @@ if(isset($_POST["order-now"])){
     } else {
 
         //show the totalValue     
-        foreach ($_POST['products'] as $i => $product) {
-        $totalValue += ($products[$i]['price']);
-        }
+        // foreach ($_POST['products'] as $i => $product) {
+        // $totalValue += ($products[$i]->price);
+        // }
     }
 }
 

@@ -107,7 +107,7 @@
             <?php //use foreach to loop thru the array
             foreach ($productChosen as $bread) { ?>
                 <p class="text-uppercase font-weight-bold my-0">
-                <?php echo $products[$bread]["name"];
+                <?php echo $products[$bread]->name;
                 //use the array[index]to get the name ?>
                 </p>
             <?php }};?>
