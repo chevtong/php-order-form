@@ -9,6 +9,8 @@ declare(strict_types=1);
 // We are going to use session variables so we need to enable sessions
 session_start();
 
+require 'products.php';
+
 // Use this function when you need to need an overview of these variables
 function whatIsHappening() {
     echo '<h2>$_GET</h2>';
@@ -31,26 +33,39 @@ $productChosen = "";
 $deliveryAddress = $emailDisplay = "";
 $emailWarning = $zipWarning = $productsWarning = "";
 
-if(isset($_GET["pastries"]) ) {
 
-    $products = [
-        ['name' => 'Cheese Cake', 'price' => 2,],
-        ['name' => 'Lemon Tart', 'price' => 2.3,],
-        ['name' => 'custard tart', 'price' => 4,],
-        ['name' => 'apple pie', 'price' => 6.5,],
-        ['name' => 'Tiramisu', 'price' => 5,],           
-    ];
 
-} else {
+// if(isset($_GET["pastries"]) ) {
 
-    $products = [
-        ['name' => 'sourdough loaf', 'price' => 2,],
-        ['name' => 'whole grain loaf', 'price' => 2.3,],
-        ['name' => 'brioche', 'price' => 4,],
-        ['name' => 'Bagel', 'price' => 2.5,],
-        ['name' => 'seeded loaf', 'price' => 6.5,], 
-    ];
-};
+//     $products = [
+//         ['name' => 'Cheese Cake', 'price' => 2,],
+//         ['name' => 'Lemon Tart', 'price' => 2.3,],
+//         ['name' => 'custard tart', 'price' => 4,],
+//         ['name' => 'apple pie', 'price' => 6.5,],
+//         ['name' => 'Tiramisu', 'price' => 5,],           
+//     ];
+
+// } else {
+
+$bread1 = new Products;
+$bread1->name = "sourdough loaf";
+$bread1->price = 2;
+
+    $products = [ 
+       
+        $bread1,
+     ];
+
+    var_dump($products[0]->price);
+        // ['name' => 'sourdough loaf', 'price' => 2,],
+        // ['name' => 'whole grain loaf', 'price' => 2.3,],
+        // ['name' => 'brioche', 'price' => 4,],
+        // ['name' => 'Bagel', 'price' => 2.5,],
+        // ['name' => 'seeded loaf', 'price' => 6.5,], 
+   // ];
+//};
+
+
 
 if(isset($_POST["order-now"])){
 
