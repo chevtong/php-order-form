@@ -35,49 +35,30 @@ $emailWarning = $zipWarning = $productsWarning = "";
 
 
 
-// if(isset($_GET["pastries"]) ) {
+if(isset($_GET["pastries"]) ) {
 
-//     $products = [
-//         ['name' => 'Cheese Cake', 'price' => 2,],
-//         ['name' => 'Lemon Tart', 'price' => 2.3,],
-//         ['name' => 'custard tart', 'price' => 4,],
-//         ['name' => 'apple pie', 'price' => 6.5,],
-//         ['name' => 'Tiramisu', 'price' => 5,],           
-//     ];
+    $products = [ 
+        new Product("cheese cake", 8.8),
+        new Product("Lemon tart", 10),
+        new Product("custard tart", 6.8),
+        new Product("apple pie", 7),
+        new Product("Liege waffle", 2.5),
+    ];
 
-// } else {
+} else {
 
-            // ['name' => 'sourdough loaf', 'price' => 2,],
-        // ['name' => 'whole grain loaf', 'price' => 2.3,],
-        // ['name' => 'brioche', 'price' => 4,],
-        // ['name' => 'Bagel', 'price' => 2.5,],
-        // ['name' => 'seeded loaf', 'price' => 6.5,], 
-   // ];
-//};
-
-
-// $bread1 = new Product;
-// $bread1->name = "sourdough loaf";
-// $bread1->price = 2;
-
-// $bread2 = new Product;
-// $bread2->name = "whole grain loaf";
-// $bread2->price = 2.4;
-
-// $bread3 = new Product;
-// $bread3->name = "brioche";
-// $bread3->price = 5;
-
-//$bread4 = new Product("Bagel", 3);
+    $products = [ 
+        new Product("sourdough loaf", 2.8),
+        new Product("whole grain loaf", 3.3),
+        new Product("Bagel", 1.9),
+        new Product("brioche", 4),
+        new Product("seeded loaf", 3.5),
+    ];
+    
+};
 
 
-$products = [ 
-    new Product("sourdough loaf", 2.8),
-    new Product("whole grain loaf", 3.3),
-    new Product("Bagel", 1.9),
-    new Product("brioche", 4),
-    new Product("seeded loaf", 3.5),
-];
+
 
 
 

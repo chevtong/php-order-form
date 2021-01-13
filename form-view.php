@@ -30,10 +30,10 @@
         <nav>
             <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-link text-warning text-uppercase active" href="?bread">Order food</a>
+                    <a class="nav-link text-warning text-uppercase active" href="?bread"> food</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link  text-warning text-uppercase" href="?pastries">Order drinks</a>
+                    <a class="nav-link  text-warning text-uppercase" href="?pastries"> pastries</a>
                 </li>
             </ul>
         </nav>
