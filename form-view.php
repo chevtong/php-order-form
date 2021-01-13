@@ -112,7 +112,7 @@
                 </p>
             <?php }};?>
             </div>
-            You already ordered <strong>&euro; <?php echo $totalValue ?></strong> in Crab &#174; <br>
+            You already ordered <strong>&euro; <?php echo $totalValueTwoDigits ?></strong> in Crab &#174; <br>
             <div class="email-display pt-1 "> <?php echo $emailDisplay;?> </div>
             <div class="address-display pt-1 pb-1"><?php echo $deliveryAddress;?></div>
 
