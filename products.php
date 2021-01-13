@@ -19,20 +19,25 @@ Class Products
 {
     var $name;
     var $price;
+
+    function displayName()
+    {
+        return $this->name;
+    }
+
+    function displayPrice()
+    {
+        return $this->price;
+    }
+
+    function __construct($name, $price)
+    {
+        displayName() = $name;
+        displayPrice() = $price;
+    }
 }
 
 
-// $bread1 = new Products;
-// $bread1->name = "sourdough loaf";
-// $bread1->price = 2;
-
-// $bread2 = new Products;
-// $bread2->name = "whole grain loaf";
-// $bread2->price = 2.4;
-
-// $bread3 = new Products;
-// $bread3->name = "brioche";
-// $bread3->price = 5;
 
 
 ?>
