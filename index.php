@@ -56,28 +56,29 @@ $emailWarning = $zipWarning = $productsWarning = "";
 //};
 
 
-$bread1 = new Products;
-$bread1->name = "sourdough loaf";
-$bread1->price = 2;
+// $bread1 = new Product;
+// $bread1->name = "sourdough loaf";
+// $bread1->price = 2;
 
-$bread2 = new Products;
-$bread2->name = "whole grain loaf";
-$bread2->price = 2.4;
+// $bread2 = new Product;
+// $bread2->name = "whole grain loaf";
+// $bread2->price = 2.4;
 
-$bread3 = new Products;
-$bread3->name = "brioche";
-$bread3->price = 5;
+// $bread3 = new Product;
+// $bread3->name = "brioche";
+// $bread3->price = 5;
+
+//$bread4 = new Product("Bagel", 3);
+
 
 $products = [ 
-    
-    $bread1, $bread2, $bread3,
+    new Product("sourdough loaf", 2.8),
+    new Product("whole grain loaf", 3.3),
+    new Product("Bagel", 1.9),
+    new Product("brioche", 4),
+    new Product("seeded loaf", 3.5),
 ];
 
-//var_dump($bread1->displayName());
-
-// foreach ($products as $product) {
-//     var_dump($product->displayName());
-// };
 
 
 

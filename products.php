@@ -15,26 +15,27 @@
 //         ['name' => 'seeded loaf', 'price' => 6.5,], 
 
 
-Class Products
+Class Product
 {
     var $name;
     var $price;
 
-    function displayName()
+    function __construct($name, $price)
+    {
+         $this->name = $name;
+         $this->price = $price;
+    }
+
+    function displayName($name)
     {
         return $this->name;
     }
 
-    function displayPrice()
+    function formattedPrice($price)
     {
-        return $this->price;
+        return number_format($this->price, 2);
     }
 
-    function __construct($name, $price)
-    {
-        displayName() = $name;
-        displayPrice() = $price;
-    }
 }
 
 
