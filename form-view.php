@@ -25,8 +25,40 @@
 <body>
 
     <div class="background"></div>
+
     <div class="container pt-5">
         <h1 class="text-capitalize font-weight-bold">Place your order</h1>
+
+                
+    
+        
+        <?php //To show the selected products: use isset when the isset($_POST["products"]) to confirm it is set
+        if(isset($_POST["products"]) && !empty($_POST["products"])){ 
+        // take out the keys of the array to refer to the products array to grab the name of the product(s)
+        //it give back an array with the keys, then use a foreach in form-view.php to grab the name
+        //var_dump($productChosen);
+        $productChosen = array_keys($_POST['products']);?>
+
+        <div class="order-confirmation">
+            <div class="order-product ">
+                <span class="choice text-capitalize font-weight-normal font-italic">your choice: <br></span>
+
+                <?php //use foreach to loop thru the array
+                foreach ($productChosen as $bread) { ?>
+
+                <p class="text-uppercase font-weight-bold my-0">
+
+                <?php echo $products[$bread]->name; //use the array[index]to get the name ?>
+                </p>
+                <?php };?>
+            </div>
+        You already ordered <strong>&euro; <?php echo $totalValueTwoDigits ?></strong> in Crab &#174; <br>
+        <div class="email-display pt-1 "> <?php echo $emailDisplay;?> </div>
+        <div class="address-display pt-1 pb-1"><?php echo $deliveryAddress;?></div>
+        
+        </div>
+        <?php }; ?>
+
         <nav>
             <ul class="nav">
                 <li class="nav-item">
@@ -37,6 +69,8 @@
                 </li>
             </ul>
         </nav>
+
+
 
         <form method="post" name="order-from">
             <div class="form-row">
@@ -83,7 +117,8 @@
                 <?php foreach ($products as $i => $product): ?>
                 <label class="products text-uppercase font-weight-bold p-1">
                     <?php // <?p= is equal to <?php echo ?>
-                    <input type="checkbox" value="1" name="products[<?php echo $i ?>]" /> <?php echo $product->displayName($product->name); ?>
+                    <input type="checkbox" value="1" name="products[<?php echo $i ?>]" />
+                    <?php echo $product->displayName($product->name); ?>
                     &euro; <?= $product->formattedPrice($product->price); ?></label><br />
                 <?php endforeach; ?>
             </fieldset>
@@ -93,31 +128,10 @@
         </form>
 
         <footer>
-            <div class="order-product ">
-                <?php //To show the selected products: use isset when the isset($_POST["products"]) to confirm it is set
-        if(isset($_POST["products"]) && !empty($_POST["products"])){ 
-            // take out the keys of the array to refer to the products array to grab the name of the product(s)
-            //it give back an array with the keys, then use a foreach in form-view.php to grab the name
-            //var_dump($productChosen);
-            $productChosen = array_keys($_POST['products']);?>
-          
-
-            <span class="choice text-capitalize font-weight-normal font-italic">your choice: <br></span>
-
-            <?php //use foreach to loop thru the array
-            foreach ($productChosen as $bread) { ?>
-                <p class="text-uppercase font-weight-bold my-0">
-                <?php echo $products[$bread]->name;
-                //use the array[index]to get the name ?>
-                </p>
-            <?php }};?>
-            </div>
-            You already ordered <strong>&euro; <?php echo $totalValueTwoDigits ?></strong> in Crab &#174; <br>
-            <div class="email-display pt-1 "> <?php echo $emailDisplay;?> </div>
-            <div class="address-display pt-1 pb-1"><?php echo $deliveryAddress;?></div>
 
         </footer>
     </div>
 
 </body>
+
 </html>

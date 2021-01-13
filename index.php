@@ -24,10 +24,10 @@ function whatIsHappening() {
     var_dump($_SESSION);
     echo "</pre>";   
 }
-whatIsHappening();
+//whatIsHappening();
    
 
-$totalValue = 0;
+$totalValue = $totalValueTwoDigits = 0;
 $email = $zipcode = $street = $streetNum = $city = "";
 $productChosen = "";
 $deliveryAddress = $emailDisplay = "";
@@ -56,14 +56,6 @@ if(isset($_GET["pastries"]) ) {
     ];
     
 };
-
-
-
-
-
-
-
-
 
 
 

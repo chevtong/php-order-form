@@ -29,9 +29,11 @@ label{
     margin: 0;
 }
 
-footer {
+.order-confirmation{
     padding: 1.3rem 2rem;
-    background-color: #dbcdbc;
+
+    background-color: rgba(219,	205, 188, .3);
+    /* background-color: #dbcdbc; */
     border-radius: 5px;
     margin: 1rem 0;
     color:#5a3f11;
